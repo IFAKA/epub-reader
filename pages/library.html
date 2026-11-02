@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EPUB Library</title>
+  <link rel="stylesheet" href="../css/library.css">
+</head>
+<body>
+  <div class="library-shell">
+    <header class="library-header">
+      <div>
+        <p class="eyebrow">Offline EPUB Reader</p>
+        <h1>Your library</h1>
+      </div>
+      <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle library theme">◐</button>
+    </header>
+
+    <main class="library-main">
+      <section id="drop-zone" class="drop-zone" aria-labelledby="import-title">
+        <div class="drop-copy">
+          <p class="drop-icon" aria-hidden="true">☁︎</p>
+          <h2 id="import-title">Import an EPUB</h2>
+          <p>Drag a file here, choose one from disk, or paste a direct EPUB URL.</p>
+        </div>
+        <div class="import-actions">
+          <input id="file-input" class="visually-hidden" type="file" accept=".epub,application/epub+zip" multiple>
+          <button id="pick-file" class="primary-button" type="button">Choose EPUB</button>
+          <form id="url-form" class="url-form">
+            <label class="visually-hidden" for="url-input">EPUB URL</label>
+            <input id="url-input" type="url" inputmode="url" placeholder="https://example.com/book.epub" autocomplete="url">
+            <button type="submit">Import URL</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="books-section" aria-labelledby="books-title">
+        <div class="section-heading">
+          <h2 id="books-title">Saved books</h2>
+          <p id="book-count">0 books</p>
+        </div>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+        <div id="books" class="books-grid"></div>
+        <p id="empty-state" class="empty-state">No books yet. Import one and it stays available offline.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="../vendor/jszip.min.js"></script>
+  <script src="../vendor/epub.min.js"></script>
+  <script src="../js/db.js"></script>
+  <script src="../js/library.js"></script>
+</body>
+</html>

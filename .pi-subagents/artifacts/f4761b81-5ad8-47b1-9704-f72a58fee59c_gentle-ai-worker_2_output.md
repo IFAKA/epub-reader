@@ -1,0 +1,1 @@
+Let me first inspect the existing project structure, then create both CSS files.

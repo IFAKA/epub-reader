@@ -1,0 +1,121 @@
+{
+  "runId": "f4761b81-5ad8-47b1-9704-f72a58fee59c",
+  "agent": "gentle-ai-worker",
+  "task": "Create the IndexedDB storage layer for an EPUB reader browser extension.\nFile: /Users/faka/code/projects/browser-extensions/epub-reader/lib/storage.js\n\nRequirements:\n- Database version 1, named \"epub-reader-db\"\n- Object stores:\n  - \"books\": ID auto-increment, stores {id (auto), name, data (ArrayBuffer), cover (base64 or null), addedAt, lastRead, readProgress (0-1), currentChapterIndex}\n  - \"bookmarks\": {bookId, chapterIndex, pageIndex, title, timestamp}\n  - \"settings\": key-value {key, value} - stores theme, fontSize, fontFamily, lineHeight\n\nMethods:\n- initDB() - open/create the database\n- addBook(name, arrayBuffer, coverData) - store a new EPUB, return book object\n- getBooks() - list all books (without binary data)\n- getBookData(bookId) - return full book data including binary\n- deleteBook(bookId) - remove book and its bookmarks\n- updateReadProgress(bookId, progress, chapterIndex) - update last read position\n- addBookmark(bookId, chapterIndex, pageIndex, chapterTitle)\n- getBookmarks(bookId) - list bookmarks for a book\n- deleteBookmark(bookmarkId)\n- getSetting(key, defaultValue)\n- setSetting(key, value)\n- extractCover(epubArrayBuffer) - use JSZip to extract the cover image from the EPUB (look in OPF <cover> metadata or try OEBPS/images/*). Returns base64 or null.\n\nKeep it vanilla JS, no dependencies. Use JSZip only for cover extraction (imported from lib/epub.js). All methods return Promises.\n\nDefault settings if not set:\n- theme: 'light'\n- fontSize: '16' (px rem)\n- fontFamily: 'Georgia'\n- lineHeight: '1.6'\n\nIMPORTANT: This file must be a complete, working module. Export a \"storage\" object with all methods.\n\n## Acceptance Contract\nAcceptance level: reviewed\nCompletion is not accepted from prose alone. End with a structured acceptance report.\n\nCriteria:\n- criterion-1: Implement the requested change without widening scope\n- criterion-2: Return evidence sufficient for an independent acceptance review\n\nRequired evidence: changed-files, tests-added, commands-run, validation-output, residual-risks, no-staged-files\n\nReview gate: required by reviewer.\n\nFinish with a fenced JSON block tagged `acceptance-report` in this shape:\nUse empty arrays when no items apply; array fields contain strings unless object entries are shown.\n`criteriaSatisfied[].status` must be exactly one of: satisfied, not-satisfied, not-applicable.\n`commandsRun[].result` must be exactly one of: passed, failed, not-run.\n`manualNotes` and `notes` are optional strings; an empty string means no note and does not satisfy `manual-notes` evidence.\n```acceptance-report\n{\n  \"criteriaSatisfied\": [\n    {\n      \"id\": \"criterion-1\",\n      \"status\": \"satisfied\",\n      \"evidence\": \"specific proof\"\n    },\n    {\n      \"id\": \"criterion-2\",\n      \"status\": \"satisfied\",\n      \"evidence\": \"specific proof\"\n    }\n  ],\n  \"changedFiles\": [\n    \"src/file.ts\"\n  ],\n  \"testsAddedOrUpdated\": [\n    \"test/file.test.ts\"\n  ],\n  \"commandsRun\": [\n    {\n      \"command\": \"command\",\n      \"result\": \"passed\",\n      \"summary\": \"short result\"\n    }\n  ],\n  \"validationOutput\": [\n    \"validation output or concise summary\"\n  ],\n  \"residualRisks\": [\n    \"none\"\n  ],\n  \"noStagedFiles\": true,\n  \"diffSummary\": \"short description of the diff\",\n  \"reviewFindings\": [\n    \"blocker: file.ts:12 - issue found, or no blockers\"\n  ],\n  \"manualNotes\": \"anything else the parent should know\"\n}\n```",
+  "exitCode": 143,
+  "model": "ollama/qwen3.6:27b-coding-nvfp4",
+  "attemptedModels": [
+    "ollama/qwen3.6:27b-coding-nvfp4"
+  ],
+  "modelAttempts": [
+    {
+      "model": "ollama/qwen3.6:27b-coding-nvfp4",
+      "success": false,
+      "exitCode": 143,
+      "usage": {
+        "input": 8428,
+        "output": 151,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "cost": 0,
+        "turns": 1
+      }
+    }
+  ],
+  "acceptance": {
+    "status": "rejected",
+    "explicit": false,
+    "effectiveAcceptance": {
+      "level": "reviewed",
+      "explicit": false,
+      "inferredReason": [
+        "async write-capable or risky run"
+      ],
+      "criteria": [
+        {
+          "id": "criterion-1",
+          "must": "Implement the requested change without widening scope",
+          "evidence": [
+            "changed-files",
+            "tests-added",
+            "commands-run",
+            "validation-output",
+            "residual-risks",
+            "no-staged-files"
+          ],
+          "severity": "required"
+        },
+        {
+          "id": "criterion-2",
+          "must": "Return evidence sufficient for an independent acceptance review",
+          "evidence": [
+            "changed-files",
+            "tests-added",
+            "commands-run",
+            "validation-output",
+            "residual-risks",
+            "no-staged-files"
+          ],
+          "severity": "required"
+        }
+      ],
+      "evidence": [
+        "changed-files",
+        "tests-added",
+        "commands-run",
+        "validation-output",
+        "residual-risks",
+        "no-staged-files"
+      ],
+      "verify": [],
+      "review": {
+        "agent": "reviewer",
+        "required": true
+      },
+      "stopRules": []
+    },
+    "inferredReason": [
+      "async write-capable or risky run"
+    ],
+    "criteria": [
+      {
+        "id": "criterion-1",
+        "must": "Implement the requested change without widening scope",
+        "evidence": [
+          "changed-files",
+          "tests-added",
+          "commands-run",
+          "validation-output",
+          "residual-risks",
+          "no-staged-files"
+        ],
+        "severity": "required"
+      },
+      {
+        "id": "criterion-2",
+        "must": "Return evidence sufficient for an independent acceptance review",
+        "evidence": [
+          "changed-files",
+          "tests-added",
+          "commands-run",
+          "validation-output",
+          "residual-risks",
+          "no-staged-files"
+        ],
+        "severity": "required"
+      }
+    ],
+    "runtimeChecks": [
+      {
+        "id": "attestation",
+        "status": "failed",
+        "message": "Structured acceptance report not found."
+      }
+    ],
+    "verifyRuns": [],
+    "childReportParseError": "Structured acceptance report not found."
+  },
+  "transcriptPath": "/Users/faka/code/projects/browser-extensions/epub-reader/.pi-subagents/artifacts/f4761b81-5ad8-47b1-9704-f72a58fee59c_gentle-ai-worker_1_transcript.jsonl",
+  "skills": [],
+  "timestamp": 1784906237598
+}

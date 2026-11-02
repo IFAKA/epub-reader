@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EPUB Reader</title>
+  <link rel="stylesheet" href="../css/reader.css">
+</head>
+<body>
+  <div class="reader-shell">
+    <aside id="toc-panel" class="toc-panel" aria-labelledby="toc-title" hidden>
+      <div class="panel-header">
+        <h2 id="toc-title">Contents</h2>
+        <button id="close-toc" type="button" aria-label="Close contents">×</button>
+      </div>
+      <nav id="toc" class="toc-list" aria-label="Table of contents"></nav>
+    </aside>
+
+    <header class="reader-toolbar" aria-label="Reader controls">
+      <a class="quiet-button" href="library.html" id="quit-link" aria-label="Return to library">Library</a>
+      <button id="toc-button" class="quiet-button" type="button" aria-expanded="false" aria-controls="toc-panel">Contents</button>
+      <div class="toolbar-spacer"></div>
+      <button id="bookmark-button" class="quiet-button" type="button" aria-label="Add bookmark" aria-pressed="false">Add bookmark</button>
+      <button id="layout-button" class="quiet-button" type="button" aria-label="Toggle reading layout, current mode: Single column" aria-pressed="false">Single column</button>
+      <button id="theme-button" class="quiet-button" type="button">Theme</button>
+      <button id="shortcut-button" class="quiet-button" type="button" aria-expanded="false" aria-controls="shortcut-help" aria-label="Show keyboard shortcuts">?</button>
+      <button id="font-down" class="quiet-button" type="button" aria-label="Decrease font size">A−</button>
+      <button id="font-up" class="quiet-button" type="button" aria-label="Increase font size">A+</button>
+    </header>
+
+    <main class="reader-main">
+      <div id="viewer" class="viewer" tabindex="0" aria-label="Book content" aria-describedby="shortcut-help"></div>
+      <div id="loading" class="loading" role="status" aria-live="polite">Opening book…</div>
+    </main>
+
+    <p class="keyboard-hint">Keyboard: <kbd>j</kbd>/<kbd>k</kbd> page · <kbd>h</kbd>/<kbd>l</kbd> section · <kbd>?</kbd> all shortcuts</p>
+
+    <footer class="reader-footer">
+      <button id="prev" type="button" aria-label="Previous page">←</button>
+      <p id="progress-label">0%</p>
+      <button id="next" type="button" aria-label="Next page">→</button>
+    </footer>
+
+    <section id="shortcut-help" class="shortcut-help" aria-labelledby="shortcut-title" hidden>
+      <div class="shortcut-panel-header">
+        <h2 id="shortcut-title">Keyboard shortcuts</h2>
+        <button id="close-shortcuts" type="button" aria-label="Close keyboard shortcuts">×</button>
+      </div>
+      <p><kbd>Tab</kbd> moves through controls · <kbd>Enter</kbd>/<kbd>Space</kbd> activate controls · <kbd>j</kbd>/<kbd>k</kbd> page · <kbd>h</kbd>/<kbd>l</kbd> section · arrows page · <kbd>r</kbd> contents · <kbd>s</kbd> bookmark · <kbd>w</kbd> layout · <kbd>t</kbd> theme · <kbd>+</kbd>/<kbd>-</kbd> font · <kbd>q</kbd> library · <kbd>?</kbd> all shortcuts · <kbd>Esc</kbd> close panels</p>
+    </section>
+  </div>
+
+  <script src="../vendor/jszip.min.js"></script>
+  <script src="../vendor/epub.min.js"></script>
+  <script src="../js/db.js"></script>
+  <script src="../js/reader.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Offline EPUB Reader",
+  "version": "1.0.0",
+  "description": "Keyboard-first offline EPUB reader for Chrome and Chromium.",
+  "action": {
+    "default_title": "EPUB Reader",
+    "default_popup": "pages/library.html",
+    "default_icon": {
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "128": "icons/icon-128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; frame-src 'self' blob:; img-src 'self' data: blob:; connect-src 'self' http: https: blob: data:;"
+  }
+}

@@ -1,0 +1,1 @@
+Voy a inspeccionar el proyecto existente primero para entender la estructura y convenciones antes de escribir el módulo.
